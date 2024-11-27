@@ -18,6 +18,9 @@ import java.nio.charset.StandardCharsets;
 public class RegisterServlet extends HttpServlet {
     private RegisterService registerService;
 
+
+    // TODO 注册时的校验，校验邀请码是否正确，根据数据库中验证码对应的identity进行身份验证，若为1则为管理员用户，若为2则为普通用户
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");

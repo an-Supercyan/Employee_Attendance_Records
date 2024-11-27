@@ -395,26 +395,6 @@
                 closeModal();
             })
     })
-    /*function insertData() {
-        axios.post('insert.action', {
-            employeeName: document.getElementById('employeeName').value,
-            department: document.getElementById('department').value,
-            requiredHours: document.getElementById('requiredHours').value,
-            punchTime: document.getElementById('punchTime').value,
-            totalHours: document.getElementById('totalHours').value,
-            overTimeHours: document.getElementById('overTimeHours').value,
-            absenceCount: document.getElementById('absenceCount').value
-        }).then(response => {
-            console.log(response.data())
-            showAlert('操作成功', '员工考勤信息添加成功!是否跳转到搜索页面')
-            //跳转到/Page页面
-        })
-            .catch(error => {
-                showAlert('数据插入失败', '请将问题反馈给管理员')
-                console.error(error);
-                closeModal();
-            })
-    }*/
 
     //弹窗相关函数 弹窗显示与关闭
     function openModal() {

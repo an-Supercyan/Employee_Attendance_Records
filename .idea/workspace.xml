@@ -9,10 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="完整项目提交">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="登录功能优化:&#10;删除上次登录时的token，每次登录生成新的token">
+      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/constant/SQL/departmentSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LogoutServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/filter/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/filter/LoginFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanBackServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanBackServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanPageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/filter/LoginFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/filter/LoginFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/filter/LoginFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/filter/LoginFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,35 +72,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.SqlTest.addAttendanceTest.executor": "Run",
-    "JUnit.SqlTest.selectAttendance.executor": "Run",
-    "JUnit.SqlTest.updateAttendance.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat 服务器.Tomcat 9.0.94.executor": "Run",
-    "database.data.extractors.current.export.id": "SQL 插入",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/idea/Employee",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40712222",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.SqlTest.addAttendanceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SqlTest.selectAttendance.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SqlTest.updateAttendance.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat 服务器.Tomcat 9.0.94.executor&quot;: &quot;Run&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL 插入&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea/Employee&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facet&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40712222&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Tomcat 服务器.Tomcat 9.0.94">
     <configuration name="SqlTest.addAttendanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Employee" />
@@ -249,7 +264,10 @@
       <workItem from="1732454960739" duration="672000" />
       <workItem from="1732499611300" duration="3635000" />
       <workItem from="1732522282365" duration="6911000" />
-      <workItem from="1732586447832" duration="4457000" />
+      <workItem from="1732586447832" duration="4872000" />
+      <workItem from="1732611160973" duration="1075000" />
+      <workItem from="1732630236532" duration="1886000" />
+      <workItem from="1732665644378" duration="2865000" />
     </task>
     <task id="LOCAL-00001" summary="完整项目提交">
       <option name="closed" value="true" />
@@ -267,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732589644668</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="登录功能优化:&#10;删除上次登录时的token，每次登录生成新的token">
+      <option name="closed" value="true" />
+      <created>1732592196581</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732592196581</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +312,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完整项目提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="完整项目提交" />
+    <MESSAGE value="登录功能优化:&#10;删除上次登录时的token，每次登录生成新的token" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录功能优化:&#10;删除上次登录时的token，每次登录生成新的token" />
   </component>
 </project>

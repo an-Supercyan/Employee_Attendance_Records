@@ -1,6 +1,5 @@
 package com.employee_records.servlet;
 
-
 import com.employee_records.dao.UserService;
 import com.employee_records.dao.impl.UserServiceImpl;
 import com.employee_records.pojo.entity.User;
@@ -36,10 +35,15 @@ public class LoginServlet extends HttpServlet {
             }
         }
 
+
+
         userService=new UserServiceImpl();
         //beta版本utf-8全局编码需要进行如下设置，从jsp表单获取数据时需要的数据时需要进行字符转码(因为tomcat统一编码时按照ISO_8859_1编译的也就是Latin_1)
         String username = new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String password = new String(req.getParameter("password").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+
+        System.out.println("username:"+username);
+        System.out.println("password:"+password);
 
         User user = userService.getUserByName(username);
 

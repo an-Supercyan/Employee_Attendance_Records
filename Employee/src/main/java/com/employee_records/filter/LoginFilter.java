@@ -17,14 +17,14 @@ public class LoginFilter extends HttpFilter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         //利用登录校验过滤器实现请求响应时的全局编码设置
-        servletRequest.setCharacterEncoding("UTF-8");
+        /*servletRequest.setCharacterEncoding("UTF-8");
         servletResponse.setCharacterEncoding("UTF-8");
-
+*/
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURL().toString();
-        if(url.contains("login")||url.contains("Login")||url.contains("Register")){
+        if(url.contains("login")||url.contains("Login")||url.contains("Register")||url.equals("http://localhost:8080/Employee_war_exploded/")){
             filterChain.doFilter(request,response);
             return;
         }

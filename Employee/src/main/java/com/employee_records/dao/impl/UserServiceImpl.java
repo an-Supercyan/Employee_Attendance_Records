@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
             preparedStatement = connection.prepareStatement(GET_USER_BY_USERNAME);
             preparedStatement.setString(1, name);
             rs = preparedStatement.executeQuery();
-            if (rs.next()) {
+            while (rs.next()){
                 user = new User();
                 user.setId(rs.getLong("id"));
                 user.setUserName(rs.getString("name"));

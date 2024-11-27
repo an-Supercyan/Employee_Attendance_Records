@@ -38,6 +38,8 @@ public class AtdanPageServlet extends HttpServlet {
             //获取当前页面展示的数据
             List<AttendanceVO> attendanceVOS = attendanceService.PageAttendanceInfo(pageNum, PAGE_SIZE);
             int total =  attendanceService.getTotalPages(PAGE_SIZE);
+
+            //设置返回的页面参数，包括页面展示的数据列表，页面当前页号，页面展示的总页数
             RequestDispatcher dispatcher = req.getRequestDispatcher("/attendanceQuery.jsp");
             req.setAttribute("attendances",attendanceVOS);
             req.setAttribute("currentPage",pageNum);

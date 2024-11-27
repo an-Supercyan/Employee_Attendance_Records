@@ -46,13 +46,15 @@ public class AttendanceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         req.setCharacterEncoding("utf-8");
-        //设置响应编码
+        //设置响应编码(必须，主要是将数据库中查询到的数据以UTF-8的形式进行返回)
         resp.setCharacterEncoding("utf-8");
         log.info("请求方式：" + req.getMethod());
         log.info("请求路径：" + req.getServletPath());
+
+        //获取路径参数
         String action = req.getServletPath();
 
-        //读取前端POST请求传输的字节流
+        //读取前端POST请求传输的字节流(获取json格式的数据)
         BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
         StringBuilder sb = new StringBuilder();
         String line;
@@ -60,6 +62,8 @@ public class AttendanceServlet extends HttpServlet {
             sb.append(line);
         }
 
+
+        //将json格式的数据通过反射转换为Java对象
         reader.close();
         Gson gson = new Gson();
         attendanceDTO = gson.fromJson(sb.toString(), AttendanceDTO.class);
@@ -101,6 +105,7 @@ public class AttendanceServlet extends HttpServlet {
 
         try {
             switch (action) {
+                // TODO 细化业务逻辑 插入不存在的部门的用户信息时，新创建该部门
                 case "/insert.action":
                     if (attendanceService.addAttendanceInfo(attendanceDTO)) {
                         log.info("添加成功");
@@ -112,6 +117,7 @@ public class AttendanceServlet extends HttpServlet {
                         System.err.println("添加时未知错误，请检查");
                     }
                     break;
+                // TODO 细化业务逻辑 删除部门的最后一个员工时，删除该部门
                 case "/delete.action":
                     if (attendanceService.deleteAttendanceInfo(attendanceDTO)) {
                         log.info("删除成功");

@@ -37,6 +37,13 @@ public class AtdanBackServlet extends HttpServlet {
         attendanceVO = new AttendanceVO();
     }
 
+    /**
+     * 实现编辑数据时的数据回显
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
