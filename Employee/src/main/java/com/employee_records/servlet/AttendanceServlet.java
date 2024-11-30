@@ -7,10 +7,8 @@ import com.employee_records.pojo.dto.AttendanceDTO;
 
 import com.employee_records.pojo.vo.AttendanceVO;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +19,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Slf4j

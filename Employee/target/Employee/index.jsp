@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-100: #6b9bd1;
-            --primary-200: #8fb8e0;
-            --primary-300: #b0d0ec;
-            --accent-100: #7eb5a6;
-            --accent-200: #5a8c7d;
-            --text-100: #2c3e50;
-            --text-200: #34495e;
-            --bg-100: #f8f9fa;
-            --bg-200: #ffffff;
-            --bg-300: #e9ecef;
+            --primary-100:#0077C2;
+            --primary-200:#59a5f5;
+            --primary-300: #466be5;
+            --accent-100: #466be5;
+            --accent-200: #54abe6;
+            --text-100:#333333;
+            --text-200:#5c5c5c;
+            --bg-100:#FFFFFF;
+            --bg-200:#f5f5f5;
+            --bg-300:#cccccc;
+
             --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 
         body {
-            background-color: var(--bg-100);
             color: var(--text-100);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -30,7 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--bg-100) linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         .container {
@@ -395,26 +395,6 @@
                 closeModal();
             })
     })
-    /*function insertData() {
-        axios.post('insert.action', {
-            employeeName: document.getElementById('employeeName').value,
-            department: document.getElementById('department').value,
-            requiredHours: document.getElementById('requiredHours').value,
-            punchTime: document.getElementById('punchTime').value,
-            totalHours: document.getElementById('totalHours').value,
-            overTimeHours: document.getElementById('overTimeHours').value,
-            absenceCount: document.getElementById('absenceCount').value
-        }).then(response => {
-            console.log(response.data())
-            showAlert('操作成功', '员工考勤信息添加成功!是否跳转到搜索页面')
-            //跳转到/Page页面
-        })
-            .catch(error => {
-                showAlert('数据插入失败', '请将问题反馈给管理员')
-                console.error(error);
-                closeModal();
-            })
-    }*/
 
     //弹窗相关函数 弹窗显示与关闭
     function openModal() {

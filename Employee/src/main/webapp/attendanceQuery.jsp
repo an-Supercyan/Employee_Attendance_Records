@@ -636,6 +636,8 @@
 
     <div class="pagination fade-in">
         <button onclick="changePage(${currentPage - 1})">上一页</button>
+        <%--使用隐藏标签将totalPages能够被JavaScript使用--%>
+        <input type="hidden" id="totalPages" value="${totalPages}">
         <c:forEach var="pageNum" begin="1" end="${totalPages}">
             <button class="${pageNum == currentPage ? 'active' : ''}"
                     onclick="changePage(${pageNum})">${pageNum}</button>
@@ -746,7 +748,7 @@
 
         axios.post('/Employee_war_exploded/search.action', formData)
             .then(response => {
-                //跳转到search.jsp页面
+                //弹出搜索弹窗
                 const searchResults = response.data;
                 displaySearchResults(searchResults);
             })
@@ -942,8 +944,14 @@
         location.reload();
     }
 
-    // 翻页
+    //翻页
     function changePage(page) {
+        //使用const以及document获取totalPages
+        const totalPages = document.getElementById('totalPages').value;
+        //翻页不能小于1或大于当前总页数
+        if (page < 1 || page > totalPages) {
+            return;
+        }
         window.location.href = "Page?page=" + page;
     }
 </script>

@@ -5,7 +5,7 @@
   Time: 下午3:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -68,7 +68,7 @@
             margin-bottom: 30px;
             font-size: 28px;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -84,7 +84,7 @@
             color: var(--text-color);
             font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .form-input:focus {
@@ -162,7 +162,8 @@
 <div class="registration-container">
     <h2 class="form-title">用户注册</h2>
 
-    <form id="registrationForm" action="<%=request.getContextPath()%>/Register" method="post" onsubmit="return validateForm()">
+    <form id="registrationForm" action="<%=request.getContextPath()%>/Register" method="post"
+          onsubmit="return validateForm()">
         <div class="form-group">
             <input
                     type="text"
@@ -202,13 +203,13 @@
         <div class="form-group">
             <input
                     type="text"
-                    id="employeeId"
-                    name="employeeId"
+                    id="secretKeyId"
+                    name="secretKeyId"
                     class="form-input"
                     placeholder="邀请码"
                     required
             >
-            <div id="employeeIdError" class="error-text"></div>
+            <div id="secretKeyIdError" class="error-text"></div>
         </div>
 
         <button type="submit" class="submit-btn">注册</button>
@@ -277,15 +278,42 @@
     });
 
     function validateForm() {
+        const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        const employeeId = document.getElementById('employeeId').value;
+        const secretKeyId = document.getElementById('secretKeyId').value;
         let isValid = true;
 
-        // Reset previous error messages
+        //各信息合法性校验
         document.getElementById('passwordError').textContent = '';
         document.getElementById('confirmPasswordError').textContent = '';
-        document.getElementById('employeeIdError').textContent = '';
+        document.getElementById('secretKeyIdError').textContent = '';
+
+        //用户名只能使用中英文字符或者. _-
+        if (!/^[a-zA-Z0-9._-]+$/.test(username)) {
+            document.getElementById('usernameError').textContent = '用户名只能使用中英文字符或者. _-';
+            Swal.fire({
+                icon: 'warning',
+                title: '用户名格式错误',
+                text: '用户名只能使用中英文字符或者. _-',
+                background: '#fff',
+                confirmButtonColor: '#0077C2'
+            });
+            isValid= false;
+        }
+
+        //用户名长度必须大于4
+        if (username.length < 4) {
+            document.getElementById('usernameError').textContent = '用户名长度必须大于4';
+            Swal.fire({
+                icon: 'warning',
+                title: '用户名长度错误',
+                text: '用户名长度必须大于4',
+                background: '#fff',
+                confirmButtonColor: '#0077C2'
+            });
+            isValid = false;
+        }
 
         // Password matching validation
         if (password !== confirmPassword) {
@@ -299,13 +327,35 @@
             });
             isValid = false;
         }
-
-        // Employee ID validation
-        if (!/^\d{6}$/.test(employeeId)) {
-            document.getElementById('employeeIdError').textContent = '邀请码必须为6位';
+        //密码只能使用数字与字母以及._-进行组合
+        if (!/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[._-])[a-zA-Z\d._-]{8,}$/.test(password)) {
+            document.getElementById('passwordError').textContent = '密码必须包含字母、数字、特殊符号 . _ -';
+            Swal.fire({
+                icon: 'warning',
+                title: '密码格式错误',
+                text: '密码必须包含字母、数字、特殊符号',
+                background: '#fff',
+            })
             isValid = false;
         }
 
+        //密码长度规定
+        if (password.length < 6) {
+            document.getElementById('passwordError').textContent = '密码长度至少为6位';
+            Swal.fire({
+                icon: 'warning',
+                title: '密码长度不足',
+                text: '密码长度至少为6位',
+                background: '#fff',
+            })
+            isValid = false;
+        }
+
+        // 邀请码合法校验
+        if (!/^\d{6}$/.test(secretKeyId)) {
+            document.getElementById('secretKeyIdError').textContent = '邀请码必须为6位';
+            isValid = false;
+        }
         return isValid;
     }
 </script>
