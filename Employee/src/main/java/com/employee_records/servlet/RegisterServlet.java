@@ -26,6 +26,8 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
+        logger.info("请求方式：" + req.getMethod());
+        logger.info("请求路径：" + req.getServletPath());
 
         UserDTO userDTO = new UserDTO();
         userDTO.setUserName(new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));

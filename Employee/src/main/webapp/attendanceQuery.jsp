@@ -593,8 +593,8 @@
                 <input type="text" id="department" name="department" placeholder="请输入部门名称">
             </div>
             <div class="form-group">
-                <label for="entryDate">日期</label>
-                <input type="date" id="entryDate" name="entryDate">
+                <label for="entryTime">日期</label>
+                <input type="date" id="entryTime" name="entryTime">
             </div>
             <div class="form-group" style="display: flex; align-items: flex-end; gap: 1rem;">
                 <button type="submit" class="button primary">搜索</button>
@@ -743,7 +743,7 @@
         const formData = {
             employeeName: document.getElementById('employeeName').value,
             department: document.getElementById('department').value,
-            entryDate: document.getElementById('entryDate').value
+            entryTime: document.getElementById('entryTime').value
         };
 
         axios.post('/Employee_war_exploded/search.action', formData)
@@ -829,7 +829,7 @@
         axios.post('/Employee_war_exploded/update.action',jsonData)
             .then(response => {
                 console.log('更新成功');
-                showAlert('操作完成','删除成功')
+                showAlert('操作完成','更新成功')
                 // 重新加载页面
             })
             .catch(error => {
@@ -850,7 +850,8 @@
         const day = String(date.getDate()).padStart(2, '0');
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
-        return year + `-` + month + `-` + day + `T` + hours + `:` + minutes;
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return year + `-` + month + `-` + day + ` ` + hours + `:` + minutes + `:` + seconds;
     }
 
     // 搜索框中的处理日期

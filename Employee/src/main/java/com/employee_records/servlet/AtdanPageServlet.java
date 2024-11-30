@@ -33,6 +33,8 @@ public class AtdanPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("utf-8");
+        logger.info("请求方式：" + req.getMethod());
+        logger.info("请求路径：" + req.getServletPath());
         try {
             int pageNum = 1;
             //页码不能小于等于0，若小于等于0则自动识别为第一页
@@ -41,7 +43,10 @@ public class AtdanPageServlet extends HttpServlet {
             pageNum = page == null ? 1 : Integer.parseInt(page);
             //获取当前页面展示的数据
             List<AttendanceVO> attendanceVOS = attendanceService.PageAttendanceInfo(pageNum, PAGE_SIZE);
+            //获取总页数
             int total =  attendanceService.getTotalPages(PAGE_SIZE);
+
+            logger.info(attendanceVOS.get(0).getPunchTime());
 
             //设置返回的页面参数，包括页面展示的数据列表，页面当前页号，页面展示的总页数
             RequestDispatcher dispatcher = req.getRequestDispatcher("/attendanceQuery.jsp");

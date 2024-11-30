@@ -46,6 +46,7 @@ public class AttendanceServiceImpl implements AttendanceService {
             Druid.destroy(connection, preparedStatement, null);
         }
         if (rows > 0) {
+            logger.info("数据库插入考勤信息成功");
             return true;
         }
         return false;
@@ -139,13 +140,13 @@ public class AttendanceServiceImpl implements AttendanceService {
         f1 = (StringUtils.isNotEmpty(attendanceDTO.getEmployeeName())) ? "a" : "";
         f2 = (StringUtils.isNotEmpty(attendanceDTO.getDepartment())) ? "b" : "";
         //根据入职时间进行员工查询
-        f3 = !(attendanceDTO.getEntryTime() == null) ? "c" : "";
+        f3 = (StringUtils.isNotEmpty(attendanceDTO.getEntryTime())) ? "c" : "";
         //将由get方式获取的字符串日期转化为日期格式
-        java.sql.Date entryDate = null;
+        java.sql.Date entryTime = null;
         if (StringUtils.isNotEmpty(attendanceDTO.getEntryTime())) {
             String Date = attendanceDTO.getEntryTime();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            entryDate = new java.sql.Date(dateFormat.parse(Date).getTime());
+            entryTime = new java.sql.Date(dateFormat.parse(Date).getTime());
         }
         try {
             connection = Druid.getConnection();
@@ -166,7 +167,7 @@ public class AttendanceServiceImpl implements AttendanceService {
                     preparedStatement = connection.prepareStatement(attendanceSQL.SELECT_ATTENDANCE + " where " + attendanceSQL.EMPLOYEE_NAME + " and " + attendanceSQL.DEPARTMENT + " and " + attendanceSQL.ENTRY_DATE);
                     preparedStatement.setString(1, "%" + attendanceDTO.getEmployeeName() + "%");
                     preparedStatement.setString(2, "%" + attendanceDTO.getDepartment() + "%");
-                    preparedStatement.setDate(3, entryDate);
+                    preparedStatement.setDate(3, entryTime);
                     break;
                 case "b":
                     preparedStatement = connection.prepareStatement(attendanceSQL.SELECT_ATTENDANCE + " where " + attendanceSQL.DEPARTMENT);
@@ -175,15 +176,15 @@ public class AttendanceServiceImpl implements AttendanceService {
                 case "bc":
                     preparedStatement = connection.prepareStatement(attendanceSQL.SELECT_ATTENDANCE + " where " + attendanceSQL.DEPARTMENT + " and " + attendanceSQL.ENTRY_DATE);
                     preparedStatement.setString(1, "%" + attendanceDTO.getDepartment() + "%");
-                    preparedStatement.setDate(2, entryDate);
+                    preparedStatement.setDate(2, entryTime);
                     break;
                 case "c":
                     preparedStatement = connection.prepareStatement(attendanceSQL.SELECT_ATTENDANCE + " where " + attendanceSQL.ENTRY_DATE);
-                    preparedStatement.setDate(1, entryDate);
+                    preparedStatement.setDate(1, entryTime);
                     break;
                 case "ac":
                     preparedStatement = connection.prepareStatement(attendanceSQL.SELECT_ATTENDANCE + " where " + attendanceSQL.ENTRY_DATE + " and " + attendanceSQL.EMPLOYEE_NAME);
-                    preparedStatement.setDate(1, entryDate);
+                    preparedStatement.setDate(1, entryTime);
                     preparedStatement.setString(2, "%" + attendanceDTO.getEmployeeName() + "%");
                     break;
                 default:
@@ -197,10 +198,10 @@ public class AttendanceServiceImpl implements AttendanceService {
                 attendanceVO.setId(rs.getLong("id"));
                 attendanceVO.setEmployeeName(new String(rs.getString("employee_name").getBytes(StandardCharsets.UTF_8)));
                 attendanceVO.setDepartment(new String(rs.getString("dept_name").getBytes(StandardCharsets.UTF_8)));
-                attendanceVO.setPunchTime(Date4matter.formatDate(rs.getTimestamp("punch_time").toLocalDateTime()));
+                attendanceVO.setPunchTime(Date4matter.formatDateNormal(rs.getTimestamp("punch_time").toLocalDateTime()));
                 attendanceVO.setTotalHours(rs.getInt("total_hours"));
                 attendanceVO.setAbsenceCount(rs.getInt("absence_count"));
-                attendanceVO.setEntryTime(Date4matter.formatDate(rs.getTimestamp("entry_time").toLocalDateTime()));
+                attendanceVO.setEntryTime(Date4matter.formatDateNormal(rs.getTimestamp("entry_time").toLocalDateTime()));
                 attendanceVO.setRequiredHours(rs.getInt("required_hours"));
                 attendanceVO.setOverTimeHours(rs.getInt("over_time_hours"));
                 attendanceVOS.add(attendanceVO);
@@ -233,7 +234,7 @@ public class AttendanceServiceImpl implements AttendanceService {
                 attendanceVO.setId(rs.getLong("id"));
                 attendanceVO.setDepartment(rs.getString("dept_name"));
                 //获取数据库中DateTime类型的数据
-                attendanceVO.setPunchTime(Date4matter.formatDate(rs.getTimestamp("punch_time").toLocalDateTime()));
+                attendanceVO.setPunchTime(Date4matter.formatDateNormal(rs.getTimestamp("punch_time").toLocalDateTime()));
                 attendanceVO.setTotalHours(rs.getInt("total_hours"));
                 attendanceVO.setAbsenceCount(rs.getInt("absence_count"));
                 attendanceVOS.add(attendanceVO);

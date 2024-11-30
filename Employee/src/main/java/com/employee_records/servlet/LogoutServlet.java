@@ -22,6 +22,8 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // TODO 业务逻辑方面需要实现用户名与密码在数据库中的校验(若有一个错误则统一返回状态值status = 0),存在则删除该用户数据，返回状态码1
+        logger.info("请求方式：" + req.getMethod());
+        logger.info("请求路径：" + req.getServletPath());
         super.doPost(req, resp);
     }
 

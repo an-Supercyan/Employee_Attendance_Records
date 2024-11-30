@@ -26,6 +26,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
+        logger.info("请求方式：" + req.getMethod());
+        logger.info("请求路径：" + req.getServletPath());
 
         //清除上次登录生成的cookie
         Cookie[] cookies = req.getCookies();

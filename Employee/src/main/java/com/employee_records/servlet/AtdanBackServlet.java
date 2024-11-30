@@ -50,6 +50,8 @@ public class AtdanBackServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
+        logger.info("请求方式：" + req.getMethod());
+        logger.info("请求路径：" + req.getServletPath());
 
         //获取Axios传递的json格式数据
         BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
@@ -63,9 +65,9 @@ public class AtdanBackServlet extends HttpServlet {
         Gson gson = new Gson();
         attendanceDTO = gson.fromJson(sb.toString(), AttendanceDTO.class);
 
-        logger.info("编辑数据回显模块获取参数:" + attendanceDTO);
+        logger.info("获取需要进行编辑回显的员工Id:{}",attendanceDTO.getId());
         attendanceVO = attendanceService.selectAttendanceById(attendanceDTO.getId());
-        logger.info("编辑数据回显参数:" + attendanceDTO);
+        logger.info("编辑数据回显参数:" + attendanceVO);
 
         //定义Json格式的字符串，响应给前端Ajax请求
         String json = gson.toJson(attendanceVO);

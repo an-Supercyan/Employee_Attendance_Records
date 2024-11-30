@@ -1,4 +1,5 @@
 import com.employee_records.pojo.vo.AttendanceVO;
+import com.employee_records.util.Date4matter;
 import com.employee_records.util.Druid;
 import org.junit.Test;
 
@@ -31,5 +32,12 @@ public class UtilTest {
         attendanceVO.setOverTimeHours(4);
         attendanceVO.setAbsenceCount(0);
         attendanceVO.setEntryTime("2023-02-22");
+    }
+    @Test
+    public void formatDateTest(){
+        LocalDateTime date = LocalDateTime.of(2023, 2, 22, 0, 0);
+        System.out.println(date);
+        System.out.println(Date4matter.formatDate(date));
+        System.out.println(Date4matter.formatDateNormal(date));
     }
 }
