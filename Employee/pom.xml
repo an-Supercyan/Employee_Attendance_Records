@@ -68,11 +68,17 @@
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
         </dependency>
-        <!--Slf4j-->
+        <!-- Slf4j日志依赖 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.16</version>
+            <version>1.7.30</version>
+        </dependency>
+        <!-- Logback实现日志 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <!--druid数据库连接池-->
         <dependency>

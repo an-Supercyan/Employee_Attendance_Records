@@ -687,7 +687,7 @@
 <div class="alert-overlay" id="alertOverlay">
     <div class="alert-box">
         <h2 class="alert-title" id="alertTitle">提示</h2>
-        <p class="alert-message" id="alertMessage">这是一个友好且简约的提示框，设计风格清新自然。</p>
+        <p class="alert-message" id="alertMessage">弹窗容器</p>
         <button class="alert-button" onclick="closeAlert()">确认</button>
     </div>
 </div>

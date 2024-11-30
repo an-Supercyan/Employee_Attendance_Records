@@ -7,9 +7,9 @@ import com.employee_records.pojo.dto.AttendanceDTO;
 import com.employee_records.pojo.vo.AttendanceVO;
 import com.employee_records.util.Date4matter;
 import com.employee_records.util.Druid;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.text.ParseException;
@@ -17,12 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-@Slf4j
 public class AttendanceServiceImpl implements AttendanceService {
+    private static final Logger logger = LoggerFactory.getLogger(AttendanceServiceImpl.class);
 
     @Override
     public boolean addAttendanceInfo(AttendanceDTO attendanceDTO) {
@@ -50,7 +46,6 @@ public class AttendanceServiceImpl implements AttendanceService {
             Druid.destroy(connection, preparedStatement, null);
         }
         if (rows > 0) {
-            log.info("插入考勤信息成功");
             return true;
         }
         return false;
@@ -72,7 +67,6 @@ public class AttendanceServiceImpl implements AttendanceService {
             Druid.destroy(connection, preparedStatement, null);
         }
         if (rows > 0) {
-            log.info("删除考勤信息成功");
             return true;
         }
         return false;
@@ -101,7 +95,6 @@ public class AttendanceServiceImpl implements AttendanceService {
             Druid.destroy(connection, preparedStatement, null);
         }
         if (rows > 0) {
-            log.info("更新考勤信息成功");
             return true;
         }
         return false;
@@ -133,7 +126,6 @@ public class AttendanceServiceImpl implements AttendanceService {
         }finally {
             Druid.destroy(connection, preparedStatement, rs);
         }
-
         return attendanceVO;
     }
 
@@ -195,7 +187,7 @@ public class AttendanceServiceImpl implements AttendanceService {
                     preparedStatement.setString(2, "%" + attendanceDTO.getEmployeeName() + "%");
                     break;
                 default:
-                    System.err.println("出现错误，请检查！！！");
+                    logger.error("员工考勤系统模块功能路径错误");
                     break;
             }
             rs = preparedStatement.executeQuery();
@@ -223,7 +215,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public List<AttendanceVO> PageAttendanceInfo(int pageNum, int pageSize) {
-        log.info("获取分页参数第{}页,页面大小为{}", pageNum, pageSize);
+        logger.info("获取分页参数第{}页,页面大小为{}", pageNum, pageSize);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         List<AttendanceVO> attendanceVOS = null;
@@ -254,7 +246,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         return attendanceVOS;
     }
 
-    //获取总页数
+    @Override
     public int getTotalPages(int pageSize) {
         Connection connection = null;
         PreparedStatement statement = null;

@@ -9,31 +9,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="登录优化编码问题:&#10;引起原因的大致因素: Tomcat服务器使用ISO-8859-1进行数据编码，因此在接收数据或者响应数据时需要转码为UTF-8。&#10;&#10;新增待办事务: 新增格式 // TODO注释形式">
-      <change afterPath="$PROJECT_DIR$/Employee/src/main/webapp/logout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="《注销模块》&#10;&#10;新增logout.jsp页面&#10;相关接口新增与修改">
+      <change afterPath="$PROJECT_DIR$/Employee/src/main/resources/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/vo/AttendanceVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/vo/AttendanceVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/AttendanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/AttendanceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/filter/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/filter/LoginFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanBackServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanBackServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AtdanPageServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/attendanceQuery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/attendanceQuery.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/vo/AttendanceVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/vo/AttendanceVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/logout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/filter/LoginFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/filter/LoginFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanBackServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanBackServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanPageServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AttendanceServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/RegisterServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/lib/slf4j-api-2.0.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/attendanceQuery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/attendanceQuery.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/vo/AttendanceVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/vo/AttendanceVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/filter/LoginFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/filter/LoginFilter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanBackServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanBackServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanPageServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AttendanceServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/RegisterServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -281,6 +288,7 @@
       <workItem from="1732719276681" duration="80000" />
       <workItem from="1732865977573" duration="5730000" />
       <workItem from="1732887942444" duration="22000" />
+      <workItem from="1732948269522" duration="3780000" />
     </task>
     <task id="LOCAL-00001" summary="完整项目提交">
       <option name="closed" value="true" />
@@ -314,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732675170577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="《注销模块》&#10;&#10;新增logout.jsp页面&#10;相关接口新增与修改">
+      <option name="closed" value="true" />
+      <created>1732948446150</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732948446150</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +351,8 @@
     <MESSAGE value="完整项目提交" />
     <MESSAGE value="登录功能优化:&#10;删除上次登录时的token，每次登录生成新的token" />
     <MESSAGE value="登录优化编码问题:&#10;引起原因的大致因素: Tomcat服务器使用ISO-8859-1进行数据编码，因此在接收数据或者响应数据时需要转码为UTF-8。&#10;&#10;新增待办事务: 新增格式 // TODO注释形式" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录优化编码问题:&#10;引起原因的大致因素: Tomcat服务器使用ISO-8859-1进行数据编码，因此在接收数据或者响应数据时需要转码为UTF-8。&#10;&#10;新增待办事务: 新增格式 // TODO注释形式" />
+    <MESSAGE value="《注销模块》&#10;&#10;新增logout.jsp页面&#10;相关接口新增与修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="《注销模块》&#10;&#10;新增logout.jsp页面&#10;相关接口新增与修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

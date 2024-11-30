@@ -4,7 +4,9 @@ import com.employee_records.dao.RegisterService;
 import com.employee_records.dao.impl.RegisterServiceImpl;
 import com.employee_records.pojo.dto.UserDTO;
 import com.employee_records.pojo.vo.AuthenticationVO;
-import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@Slf4j
+
 public class RegisterServlet extends HttpServlet {
     private RegisterService registerService;
-
+    private static final Logger logger = LoggerFactory.getLogger(RegisterServlet.class);
 
     // TODO 注册时的校验，校验邀请码是否正确，根据数据库中验证码对应的identity进行身份验证，若为1则为管理员用户，若为2则为普通用户
 
@@ -35,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
         AuthenticationVO authenticationVO = registerService.getAuthByKey(userDTO.getSecretKey());
 
         if (!authenticationVO.getAuthentication().equals("1")){
-            log.info("用户密钥不正确，注册失败！！！");
+            logger.info("用户密钥不正确，注册失败！！！");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/loginErro.jsp");
             dispatcher.forward(req,resp);
         }

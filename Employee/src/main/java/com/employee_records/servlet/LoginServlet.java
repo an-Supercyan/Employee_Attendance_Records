@@ -4,8 +4,10 @@ import com.employee_records.dao.UserService;
 import com.employee_records.dao.impl.UserServiceImpl;
 import com.employee_records.pojo.entity.User;
 import com.employee_records.util.JwtUtil;
-import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.codec.digest.DigestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +17,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
+
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(AtdanBackServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,8 +45,8 @@ public class LoginServlet extends HttpServlet {
         String username = new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String password = new String(req.getParameter("password").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 
-        System.out.println("username:"+username);
-        System.out.println("password:"+password);
+        logger.info("用户名信息{}",username);
+        logger.info("密码信息{}",password);
 
         User user = userService.getUserByName(username);
 

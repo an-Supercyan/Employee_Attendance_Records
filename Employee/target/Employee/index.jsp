@@ -17,7 +17,6 @@
             --bg-100:#FFFFFF;
             --bg-200:#f5f5f5;
             --bg-300:#cccccc;
-
             --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 

@@ -6,7 +6,9 @@ import com.employee_records.dao.impl.AttendanceServiceImpl;
 import com.employee_records.pojo.dto.AttendanceDTO;
 import com.employee_records.pojo.vo.AttendanceVO;
 import com.google.gson.Gson;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,13 +23,14 @@ import java.io.PrintWriter;
 /**
  * 编辑数据回显Servlet类
  */
-@Slf4j
 @WebServlet("/Back")
 public class AtdanBackServlet extends HttpServlet {
+    private static final Logger logger = LoggerFactory.getLogger(AtdanBackServlet.class);
 
     private AttendanceService attendanceService;
     private AttendanceDTO attendanceDTO;
     private AttendanceVO attendanceVO;
+
 
     @Override
     public void init() throws ServletException {
@@ -60,9 +63,9 @@ public class AtdanBackServlet extends HttpServlet {
         Gson gson = new Gson();
         attendanceDTO = gson.fromJson(sb.toString(), AttendanceDTO.class);
 
-        System.out.println(attendanceDTO.toString());
+        logger.info("编辑数据回显模块获取参数:" + attendanceDTO);
         attendanceVO = attendanceService.selectAttendanceById(attendanceDTO.getId());
-        System.out.println(attendanceVO.toString());
+        logger.info("编辑数据回显参数:" + attendanceDTO);
 
         //定义Json格式的字符串，响应给前端Ajax请求
         String json = gson.toJson(attendanceVO);

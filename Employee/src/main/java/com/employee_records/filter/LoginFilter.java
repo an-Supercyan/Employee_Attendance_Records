@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 import com.employee_records.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;//导入StringUtils工具类
 
 @WebFilter(urlPatterns = "/*")
 public class LoginFilter extends HttpFilter {
+    private static final Logger logger = Logger.getLogger(LoginFilter.class.getName());
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         //利用登录校验过滤器实现请求响应时的全局编码设置
@@ -24,7 +27,7 @@ public class LoginFilter extends HttpFilter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURL().toString();
-        if(url.contains("login")||url.contains("Login")||url.contains("Register")||url.equals("http://localhost:8080/Employee_war_exploded/")){
+        if(url.contains("login")||url.contains("Login")||url.contains("Register")||url.contains("register")||url.equals("http://localhost:8080/Employee_war_exploded/")){
             filterChain.doFilter(request,response);
             return;
         }
@@ -37,14 +40,11 @@ public class LoginFilter extends HttpFilter {
             return;
         }
 
-        for (Cookie cookie : cookies) {
-            System.out.println(cookie.getName() + ":" + cookie.getValue());
-        }
-
         String jwt = null;
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
                     jwt = new String(cookie.getValue().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+                    logger.info("jwt令牌：" + jwt);
                     break;
                 }
             }

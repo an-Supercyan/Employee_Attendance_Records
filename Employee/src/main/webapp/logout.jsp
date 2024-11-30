@@ -13,8 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>账户注销确认</title>
     <style>
-        /* Base styles */
+        /*配色*/
         :root {
+            --primary-gradient: linear-gradient(135deg, #4686e5 0%, #5eaeff 100%);
             --primary-blue: #4299e1;
             --primary-blue-dark: #2b6cb0;
             --danger-red: #e53e3e;
@@ -25,7 +26,7 @@
             --text-primary: #2c5282;
         }
 
-        /* Container and card styles */
+        /*容器卡片样式*/
         .container {
             min-height: 100vh;
             background: linear-gradient(135deg, #e6f3ff 0%, #ffffff 100%);
@@ -48,7 +49,7 @@
             animation: fadeIn 0.6s ease forwards;
         }
 
-        /* Form styles */
+        /*表单样式*/
         .form-group {
             margin-bottom: 2rem;
             text-align: center;
@@ -79,7 +80,7 @@
             transform: scale(1.02);
         }
 
-        /* Button styles */
+        /*确认注销按钮样式*/
         .btn {
             padding: 1rem 2rem;
             border: none;
@@ -104,7 +105,7 @@
             box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
         }
 
-        /* Modal styles */
+        /*悬浮窗样式*/
         .modal {
             display: none;
             position: fixed;
@@ -170,13 +171,36 @@
             box-shadow: 0 5px 15px rgba(113, 128, 150, 0.3);
         }
 
-        /* Error message styles */
+        /*错误信息样式*/
         .error-message {
             color: var(--danger-red);
             font-size: 0.9rem;
             margin-top: 0.75rem;
             display: none;
             animation: shake 0.4s ease-in-out;
+        }
+
+        /*返回按钮样式*/
+        .return-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .return-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         /* Animations */
@@ -205,6 +229,9 @@
     </style>
 </head>
 <body>
+<button onclick="window.location.href='index.jsp'" class="return-button">
+    返回主页
+</button>
 <div class="container">
     <div class="logout-card">
         <form id="logoutForm"  style="display: none;">
