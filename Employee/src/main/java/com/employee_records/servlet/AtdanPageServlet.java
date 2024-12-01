@@ -45,15 +45,18 @@ public class AtdanPageServlet extends HttpServlet {
             List<AttendanceVO> attendanceVOS = attendanceService.PageAttendanceInfo(pageNum, PAGE_SIZE);
             //获取总页数
             int total =  attendanceService.getTotalPages(PAGE_SIZE);
-
-            logger.info(attendanceVOS.get(0).getPunchTime());
-
-            //设置返回的页面参数，包括页面展示的数据列表，页面当前页号，页面展示的总页数
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/attendanceQuery.jsp");
-            req.setAttribute("attendances",attendanceVOS);
-            req.setAttribute("currentPage",pageNum);
-            req.setAttribute("totalPages",total);
-            dispatcher.forward(req,resp);
+            //设置返回的页面参数，包括页面展示的数据列表，页面当前页号，页面展示的总页数,当该
+            logger.info("获取分页参数第{}页,页面大小为{}", pageNum, PAGE_SIZE);
+            //如果页面展示的数据小于1，则返回前一页
+            if (attendanceVOS.isEmpty()) {
+                resp.sendRedirect("Page?page=" + (pageNum - 1));
+            }else {
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/attendanceQuery.jsp");
+                req.setAttribute("attendances",attendanceVOS);
+                req.setAttribute("currentPage",pageNum);
+                req.setAttribute("totalPages",total);
+                dispatcher.forward(req,resp);
+            }
         }
         catch (NumberFormatException e){
             e.printStackTrace();

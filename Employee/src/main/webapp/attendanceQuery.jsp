@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -616,6 +617,8 @@
             </tr>
             </thead>
             <tbody>
+            <%--使用隐藏标签将attendances的长度能够被JavaScript使用--%>
+            <input type="hidden" id="attendancesLength" value="${fn:length(attendances)}">
             <c:forEach var="attendance" items="${attendances}">
                 <tr>
                     <td>${attendance.employeeName}</td>
@@ -635,9 +638,13 @@
     </div>
 
     <div class="pagination fade-in">
-        <button onclick="changePage(${currentPage - 1})">上一页</button>
+
         <%--使用隐藏标签将totalPages能够被JavaScript使用--%>
         <input type="hidden" id="totalPages" value="${totalPages}">
+        <%--使用隐藏标签将currentPage能够被JavaScript使用--%>
+        <input type="hidden" id="currentPage" value="${currentPage}">
+
+        <button onclick="changePage(${currentPage - 1})">上一页</button>
         <c:forEach var="pageNum" begin="1" end="${totalPages}">
             <button class="${pageNum == currentPage ? 'active' : ''}"
                     onclick="changePage(${pageNum})">${pageNum}</button>
@@ -754,7 +761,7 @@
             })
             .catch(error => {
                 console.error('搜索失败:', error);
-                showAlert('操作失败','出现未知错误请反馈给管理员')
+                showAlert('操作失败', '出现未知错误请反馈给管理员')
             });
     });
 
@@ -812,7 +819,7 @@
             })
             .catch(error => {
                 console.error('Error fetching attendance data:', error);
-                showAlert('操作失败','出现未知错误请反馈给管理员')
+                showAlert('操作失败', '出现未知错误请反馈给管理员')
             });
     }
 
@@ -823,18 +830,18 @@
         const formData = new FormData(this);
 
         //将表单数据转为json
-        const jsonData =  Object.fromEntries(formData.entries());
+        const jsonData = Object.fromEntries(formData.entries());
         formData.append('jsonData', JSON.stringify(jsonData));
         console.log(jsonData);
-        axios.post('/Employee_war_exploded/update.action',jsonData)
+        axios.post('/Employee_war_exploded/update.action', jsonData)
             .then(response => {
                 console.log('更新成功');
-                showAlert('操作完成','更新成功')
+                showAlert('操作完成', '更新成功')
                 // 重新加载页面
             })
             .catch(error => {
                 console.error('更新失败:', error);
-                showAlert('操作失败','出现未知错误请反馈给管理员')
+                showAlert('操作失败', '出现未知错误请反馈给管理员')
             })
     });
 
@@ -868,11 +875,11 @@
         if (!currentDeleteId) return;
         axios.post('/Employee_war_exploded/delete.action', {id: currentDeleteId})
             .then(response => {
-                showAlert('操作完成','删除成功')
+                showAlert('操作完成', '删除成功');
             })
             .catch(error => {
                 console.error('Error deleting attendance:', error);
-                showAlert('操作失败','出现未知错误请反馈给管理员')
+                showAlert('操作失败', '出现未知错误请反馈给管理员')
             })
             .finally(() => {
                 currentDeleteId = null;
@@ -941,14 +948,26 @@
     // 关闭弹窗的函数
     function closeAlert() {
         document.getElementById('alertOverlay').classList.remove('show');
-        //刷新页面
-        location.reload();
+
+        //使用const获取当前页数
+        const currentPage = document.getElementById('currentPage').value;
+        //使用const获取attendancesLength
+        const attendancesLength = document.getElementById('attendancesLength').value;
+        //如果删除的是当前页面的最后一个数据，则跳转到前一页
+        if(attendancesLength === 1 && currentPage > 1 ){
+            window.location.href = '/Employee_war_exploded/Page?page=' + (currentPage - 1);
+        }else{
+            //刷新页面
+            location.reload();
+        }
     }
 
     //翻页
     function changePage(page) {
         //使用const以及document获取totalPages
         const totalPages = document.getElementById('totalPages').value;
+        //使用const以及document获取currentPage
+        const currentPage = document.getElementById('currentPage').value;
         //翻页不能小于1或大于当前总页数
         if (page < 1 || page > totalPages) {
             return;
