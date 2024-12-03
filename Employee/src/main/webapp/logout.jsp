@@ -239,13 +239,13 @@
                 账户注销确认
             </h2>
             <div class="form-group">
-                <input type="text" id="username" name="username" class="form-control"
-                       placeholder="输入用户名" required>
+                <input type="text" id="userName" name="userName" class="form-control"
+                                                     placeholder="输入用户名" required>
                 <div id="usernameError" class="error-message">请输入有效的用户名</div>
             </div>
             <div class="form-group">
-                <input type="password" id="password" name="password" class="form-control"
-                       placeholder="输入密码" required>
+                <input type="password" id="passWord" name="passWord" class="form-control"
+                                                     placeholder="输入密码" required>
                 <div id="passwordError" class="error-message">请输入正确的密码</div>
             </div>
             <button type="submit" class="btn btn-confirm">确认注销账户</button>
@@ -270,122 +270,52 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('logoutModal');
-        const logoutForm = document.getElementById('logoutForm');
-        const username = document.getElementById('username');
-        const password = document.getElementById('password');
-        const usernameError = document.getElementById('usernameError');
-        const passwordError = document.getElementById('passwordError');
-
-        // 中文 输入框提示
-        modal.style.display = 'flex';
-        modal.style.opacity = '0';
-        requestAnimationFrame(() => {
-            modal.style.opacity = '1';
-            modal.style.transition = 'opacity 0.3s ease';
-        });
-
-        // 点击否按钮时，关闭弹窗并跳转到首页
-        document.getElementById('btnNo').addEventListener('click', function() {
-            modal.style.opacity = '0';
-            setTimeout(() => {
-                window.location.href = 'index.jsp';
-            }, 300);
-        });
-
-        // 点击是按钮时，关闭弹窗并显示注销表单
-        document.getElementById('btnYes').addEventListener('click', function() {
-            modal.style.opacity = '0';
-            setTimeout(() => {
-                modal.style.display = 'none';
-                logoutForm.style.display = 'block';
-                logoutForm.style.opacity = '0';
-                requestAnimationFrame(() => {
-                    logoutForm.style.opacity = '1';
-                    logoutForm.style.transition = 'opacity 0.3s ease';
+    //点击确认注销弹窗的确认按钮提交表单时用户名和密码不能为空，若为空则提示
+    document.getElementById("logoutForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var userName = document.getElementById("userName").value;
+        var passWord = document.getElementById("passWord").value;
+        if (userName === "" || passWord === "") {
+            // 显示错误信息
+            document.getElementById("usernameError").style.display = "block";
+            document.getElementById("passwordError").style.display = "block";
+        } else {
+            // 隐藏错误信息
+            document.getElementById("usernameError").style.display = "none";
+            document.getElementById("passwordError").style.display = "none";
+            //使用axios异步提交表单
+            //格式化表单数据为json格式
+            const formData = new FormData(this);
+            //将表单数据转为json
+            const jsonData = Object.fromEntries(formData.entries());
+            formData.append('jsonData', JSON.stringify(jsonData));
+            console.log(jsonData);
+            //如果表单合法则使用axios的Post请求方式异步传输logoutForm表单内容
+            axios.post('/Employee_war_exploded/Logout',jsonData)
+                .then(response => {
+                    if (response.data === 1) {
+                        //弹出注销成功弹窗后两秒返回登录页面
+                        alert('注销成功，两秒后返回登录页面');
+                        setTimeout(function () {
+                            window.location.href = 'login.jsp';
+                        }, 2000);
+                    } else if(response.data === 0) {
+                        alert('用户名或密码错误');
+                    }
+                }).catch(error => {
+                    console.error(error);
                 });
-            }, 300);
-        });
-
-        // 判断表单数据合法性
-        logoutForm.addEventListener('submit', function(e) {
-            let isValid = true;
-
-            // 重置错误提示
-            [usernameError, passwordError].forEach(error => {
-                error.style.display = 'none';
-            });
-
-            // 用户名合法
-            if (!username.value.trim()) {
-                usernameError.style.display = 'block';
-                username.classList.add('error');
-                isValid = false;
-            }
-
-            // 当前密码合法
-            if (!password.value.trim()) {
-                passwordError.style.display = 'block';
-                password.classList.add('error');
-                isValid = false;
-            }
-
-            if (!isValid) {
-                e.preventDefault();
-                // Shake animation for invalid fields
-                const invalidInputs = document.querySelectorAll('.error');
-                invalidInputs.forEach(input => {
-                    input.style.animation = 'none';
-                    requestAnimationFrame(() => {
-                        input.style.animation = 'shake 0.4s ease-in-out';
-                    });
-                });
-            }
-        });
-
-        // 输入框获得焦点时，放大输入框
-        [username, password].forEach(input => {
-            input.addEventListener('input', function() {
-                this.classList.remove('error');
-                const errorElement = document.getElementById(this.id + 'Error');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
-            });
-
-            input.addEventListener('focus', function() {
-                this.style.transform = 'scale(1.02)';
-            });
-
-            input.addEventListener('blur', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
+        }
     });
-
-    //axios异步请求LogoutServlet发送POST表单，返回值为1时注销成功，跳转到Login页面，返回值为0时注销失败弹出弹窗提醒用户输入用户名或密码错误
-    document.querySelector('#logoutForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = {
-            username: document.querySelector('#username').value,
-            password: document.querySelector('#password').value
-        };
-        axios.post('/Employee_war_exploded/Logout', formData)
-            .then(response => {
-                if (response.data === 1) {
-                    //弹出注销成功弹窗后两秒返回登录页面
-                    alert('注销成功，两秒后返回登录页面');
-                    setTimeout(function () {
-                        window.location.href = 'index.jsp';
-                    }, 2000);
-                } else {
-                    alert('用户名或密码错误');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
+    //显示表单
+    document.getElementById("logoutForm").style.display = "block";
+    //点击确认注销按钮弹出注销确认弹窗
+    document.getElementById("btnYes").addEventListener("click", function () {
+        document.getElementById("logoutModal").style.display = "block";
+    });
+    //点击弹窗的取消按钮返回index.jsp
+    document.getElementById("btnNo").addEventListener("click", function () {
+        window.location.href = 'index.jsp';
     });
 </script>
 </body>

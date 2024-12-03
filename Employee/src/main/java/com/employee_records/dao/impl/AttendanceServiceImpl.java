@@ -81,7 +81,6 @@ public class AttendanceServiceImpl implements AttendanceService {
         try {
             connection = Druid.getConnection();
             preparedStatement = connection.prepareStatement(attendanceSQL.UPDATE_BY_ID);
-            // TODO 考勤信息更新
             preparedStatement.setString(1,attendanceDTO.getEmployeeName());
             preparedStatement.setString(2,attendanceDTO.getDepartment());
             preparedStatement.setString(3, attendanceDTO.getPunchTime());

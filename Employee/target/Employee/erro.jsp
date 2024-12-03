@@ -148,12 +148,12 @@
     </div>
 
     <div id="countdown" class="countdown-timer">
-        页面将在 5 秒后自动跳转
+        页面将在 10 秒后自动跳转
     </div>
 </div>
 
 <script>
-    let seconds = 5;
+    let seconds = 10;
     const countdownEl = document.getElementById('countdown');
 
     function updateCountdown() {
@@ -170,7 +170,6 @@
     function returnToIndex() {
         window.location.href = 'login.jsp';
     }
-
     updateCountdown();
 </script>
 </body>

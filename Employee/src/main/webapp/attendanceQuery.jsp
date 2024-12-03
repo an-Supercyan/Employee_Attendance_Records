@@ -414,18 +414,22 @@
             transform: rotate(90deg);
         }
 
-        /* 表格样式 */
+        /* 搜索表格样式 */
         #searchResultsTable {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
         }
 
+
         #searchResultsTable thead {
             position: sticky;
             top: 0;
             background-color: #f0f4f8;
             z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: hidden;
+            height: 40px;
         }
 
         #searchResultsTable th {
@@ -434,6 +438,8 @@
             color: #2c5282;
             font-weight: 600;
             border-bottom: 1px solid #e6e9ee;
+            font-size: 0.9rem;
+            overflow: hidden;
         }
 
         #searchResultsTable td {
@@ -584,7 +590,7 @@
         <h1>考勤信息管理系统</h1>
     </header>
     <div class="search-container fade-in">
-        <form class="search-form" action="search.action" method="post">
+        <form class="search-form">
             <div class="form-group">
                 <label for="employeeName">员工姓名</label>
                 <input type="text" id="employeeName" name="employeeName" placeholder="请输入员工姓名">
@@ -828,7 +834,6 @@
         // 阻止表单默认提交行为
         e.preventDefault();
         const formData = new FormData(this);
-
         //将表单数据转为json
         const jsonData = Object.fromEntries(formData.entries());
         formData.append('jsonData', JSON.stringify(jsonData));
@@ -948,26 +953,14 @@
     // 关闭弹窗的函数
     function closeAlert() {
         document.getElementById('alertOverlay').classList.remove('show');
-
-        //使用const获取当前页数
-        const currentPage = document.getElementById('currentPage').value;
-        //使用const获取attendancesLength
-        const attendancesLength = document.getElementById('attendancesLength').value;
-        //如果删除的是当前页面的最后一个数据，则跳转到前一页
-        if(attendancesLength === 1 && currentPage > 1 ){
-            window.location.href = '/Employee_war_exploded/Page?page=' + (currentPage - 1);
-        }else{
-            //刷新页面
-            location.reload();
-        }
+        //关闭窗口后刷新页面
+        location.reload();
     }
 
     //翻页
     function changePage(page) {
         //使用const以及document获取totalPages
         const totalPages = document.getElementById('totalPages').value;
-        //使用const以及document获取currentPage
-        const currentPage = document.getElementById('currentPage').value;
         //翻页不能小于1或大于当前总页数
         if (page < 1 || page > totalPages) {
             return;

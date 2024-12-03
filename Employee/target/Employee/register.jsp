@@ -162,8 +162,7 @@
 <div class="registration-container">
     <h2 class="form-title">用户注册</h2>
 
-    <form id="registrationForm" action="<%=request.getContextPath()%>/Register" method="post"
-          onsubmit="return validateForm()">
+    <form id="registrationForm" onsubmit="return validateForm()">
         <div class="form-group">
             <input
                     type="text"
@@ -206,8 +205,7 @@
                     id="secretKeyId"
                     name="secretKeyId"
                     class="form-input"
-                    placeholder="邀请码"
-                    required
+                    placeholder="邀请码(可以选择不填)"
             >
             <div id="secretKeyIdError" class="error-text"></div>
         </div>
@@ -219,6 +217,7 @@
     </form>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     particlesJS('particles-js', {
         particles: {
@@ -302,13 +301,13 @@
             isValid= false;
         }
 
-        //用户名长度必须大于4
+        //用户名长度必须大于等于4
         if (username.length < 4) {
             document.getElementById('usernameError').textContent = '用户名长度必须大于4';
             Swal.fire({
                 icon: 'warning',
                 title: '用户名长度错误',
-                text: '用户名长度必须大于4',
+                text: '用户名长度必须大于等于4',
                 background: '#fff',
                 confirmButtonColor: '#0077C2'
             });
@@ -327,15 +326,16 @@
             });
             isValid = false;
         }
-        //密码只能使用数字与字母以及._-进行组合
-        if (!/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[._-])[a-zA-Z\d._-]{8,}$/.test(password)) {
-            document.getElementById('passwordError').textContent = '密码必须包含字母、数字、特殊符号 . _ -';
+        //密码只能使用数字与字母以及._-共同进行组合
+        if (!/^[a-zA-Z0-9._-]+$/.test(password)) {
+            document.getElementById('passwordError').textContent = '密码只能使用数字与字母以及._-共同进行组合';
             Swal.fire({
                 icon: 'warning',
                 title: '密码格式错误',
-                text: '密码必须包含字母、数字、特殊符号',
+                text: '密码只能使用包含数字与字母以及._-的组合',
                 background: '#fff',
-            })
+                confirmButtonColor: '#0077C2'
+            });
             isValid = false;
         }
 
@@ -351,13 +351,62 @@
             isValid = false;
         }
 
-        // 邀请码合法校验
-        if (!/^\d{6}$/.test(secretKeyId)) {
-            document.getElementById('secretKeyIdError').textContent = '邀请码必须为6位';
-            isValid = false;
+        // 邀请码合法校验(可以不填写)邀请码必须为7位数字与字母的组合
+        if (secretKeyId !== '') {
+            if (!/^[a-zA-Z0-9]{7}$/.test(secretKeyId)) {
+                document.getElementById('secretKeyIdError').textContent = '邀请码必须为7位数字与字母的组合';
+                Swal.fire({
+                    icon: 'warning',
+                    title: '邀请码格式错误',
+                    text: '邀请码必须为7位数字与字母的组合',
+                    background: '#fff',
+                    confirmButtonColor: '#0077C2'
+                })
+            }
         }
         return isValid;
     }
+
+    // 使用axios异步提交表单(注册成功则返回状态码0，注册失败则返回状态码1:表示管理员 或2:表示普通员工)
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (validateForm()) {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const secretKeyId = document.getElementById('secretKeyId').value;
+            if (typeof Swal === 'undefined') {
+                console.error('Swal未定义');
+                return;
+            }
+            axios.post('/Employee_war_exploded/Register', {
+                userName: username,
+                passWord: password,
+                secretKeyId: secretKeyId
+            }).then(function (response) {
+                if (response.data > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '注册成功',
+                        text: response.data === 1 ? '欢迎您成为本公司系统维护者' : '欢迎您未来为本公司作出杰出贡献',
+                        background: '#fff',
+                        confirmButtonColor: '#0077C2'
+                    }).then(function () {
+                        window.location.href ='login.jsp';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '注册失败,请联系系统维护管理员',
+                       text: response.data.message,
+                    })
+                }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    });
 </script>
 </body>
 </html>

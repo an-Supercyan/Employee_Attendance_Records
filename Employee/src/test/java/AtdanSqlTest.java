@@ -9,7 +9,11 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class SqlTest {
+public class AtdanSqlTest {
+
+    /**
+     * 添加考勤信息
+     */
     @Test
     public void addAttendanceTest(){
         AttendanceService attendanceService = new AttendanceServiceImpl();
@@ -43,6 +47,9 @@ public class SqlTest {
         boolean b = attendanceService.deleteAttendanceInfo(attendanceDTO);
     }
 
+    /**
+     * 分页查询测试
+     */
     @Test
     public void PageTest(){
         AttendanceService attendanceService = new AttendanceServiceImpl();
@@ -51,6 +58,11 @@ public class SqlTest {
             System.out.println(attendanceVO.toString());
         }
     }
+
+    /**
+     * 模糊匹配查询
+     * @throws ParseException
+     */
     @Test
     public void selectAttendance() throws ParseException {
         AttendanceService attendanceService = new AttendanceServiceImpl();
@@ -62,6 +74,9 @@ public class SqlTest {
         }
     }
 
+    /**
+     * 更新考勤信息
+     */
     @Test
     public void updateAttendance(){
         AttendanceService attendanceService = new AttendanceServiceImpl();

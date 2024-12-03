@@ -1,7 +1,10 @@
 package com.employee_records.dao.impl;
 
+import com.employee_records.constant.SQL.authSQL;
 import com.employee_records.dao.RegisterService;
-import com.employee_records.pojo.dto.UserDTO;
+
+import com.employee_records.pojo.dto.AuthenticationDTO;
+import com.employee_records.pojo.entity.Authentication;
 import com.employee_records.pojo.vo.AuthenticationVO;
 import com.employee_records.util.Druid;
 
@@ -11,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterServiceImpl implements RegisterService {
-    public static final String GET_AUTH_BY_KEY = "select * from user_auth where secretKey = ?";
-    public static final String ADD_USER = "insert into users (name, password) VALUES(?,?) ";
 
     public AuthenticationVO getAuthByKey(String key) {
         AuthenticationVO authenticationVO = null;
@@ -22,12 +23,15 @@ public class RegisterServiceImpl implements RegisterService {
         try {
 
             connection = Druid.getConnection();
-            preparedStatement = connection.prepareStatement(GET_AUTH_BY_KEY);
+            preparedStatement = connection.prepareStatement(authSQL.GET_AUTH_BY_KEY);
             preparedStatement.setString(1, key);
             rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                authenticationVO.setAuthentication(rs.getString("authentication"));
+                authenticationVO = new AuthenticationVO();
+                authenticationVO.setId(rs.getLong("id"));
+                authenticationVO.setAuth(rs.getInt("auth"));
                 authenticationVO.setIdentity(rs.getString("identity"));
+                authenticationVO.setUserId(rs.getLong("user_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,19 +42,27 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void addUser(UserDTO userDTO) {
+    public boolean updateAuth(AuthenticationDTO authenticationDTO) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        int row = 0;
         try {
             connection = Druid.getConnection();
-            preparedStatement = connection.prepareStatement(ADD_USER);
-            preparedStatement.setString(1, userDTO.getUserName());
-            preparedStatement.setString(2, userDTO.getPassWordFir());
-            preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement(authSQL.UPDATE_AUTH);
+            preparedStatement.setLong(1, authenticationDTO.getUserId());
+            preparedStatement.setLong(2, authenticationDTO.getId());
+            row = preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            Druid.destroy(connection, preparedStatement,null);
+            throw new RuntimeException(e);
+        }finally {
+            Druid.destroy(connection, preparedStatement, null);
         }
+        if(row>0){
+            return true;
+        }
+        return false;
     }
+
+
+
 }

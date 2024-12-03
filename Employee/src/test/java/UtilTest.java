@@ -10,6 +10,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class UtilTest {
+
+    /**
+     * durid 连接池测试
+     */
     @Test
     public void getConncetionTest(){
         Connection connection = Druid.getConnection();
@@ -33,6 +37,10 @@ public class UtilTest {
         attendanceVO.setAbsenceCount(0);
         attendanceVO.setEntryTime("2023-02-22");
     }
+
+    /**
+     * 日期格式转化
+     */
     @Test
     public void formatDateTest(){
         LocalDateTime date = LocalDateTime.of(2023, 2, 22, 0, 0);

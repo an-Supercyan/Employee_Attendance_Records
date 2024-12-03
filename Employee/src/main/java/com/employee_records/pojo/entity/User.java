@@ -12,5 +12,5 @@ public class User {
     private long id;
     private String userName;
     private String passWord;
-    private String authId;
+    private Long authId;
 }

@@ -61,11 +61,11 @@ public class AttendanceServlet extends HttpServlet {
             sb.append(line);
         }
 
-
         //将json格式的数据通过反射转换为Java对象
         reader.close();
         Gson gson = new Gson();
         attendanceDTO = gson.fromJson(sb.toString(), AttendanceDTO.class);
+
 
         /*if (!StringUtils.isEmpty(req.getParameter("employeeName"))) {
             //存入到数据库时不需要进行转码
@@ -144,10 +144,7 @@ public class AttendanceServlet extends HttpServlet {
                     /*RequestDispatcher dispatcher = req.getRequestDispatcher("search.jsp");
                     req.setAttribute("searchResults", searchAtdanVOS);
                     dispatcher.forward(req, resp);*/
-                    logger.info("查询结果如下：");
-                    for (AttendanceVO attendanceVO : attendanceVOS) {
-                        logger.info("员工姓名:{}", attendanceVO.getEmployeeName());
-                    }
+                    logger.info("查询数据量为{}",attendanceVOS.size());
                     String json = gson.toJson(attendanceVOS);
                     PrintWriter out = resp.getWriter();
                     out.print(json);

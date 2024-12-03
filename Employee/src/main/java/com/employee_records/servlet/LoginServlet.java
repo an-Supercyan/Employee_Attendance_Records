@@ -26,8 +26,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
-        logger.info("请求方式：" + req.getMethod());
-        logger.info("请求路径：" + req.getServletPath());
+        logger.info("请求方式:" + req.getMethod());
+        logger.info("请求路径:" + req.getServletPath());
 
         //清除上次登录生成的cookie
         Cookie[] cookies = req.getCookies();
@@ -40,15 +40,13 @@ public class LoginServlet extends HttpServlet {
             }
         }
 
-
-
         userService=new UserServiceImpl();
         //beta版本utf-8全局编码需要进行如下设置，从jsp表单获取数据时需要的数据时需要进行字符转码(因为tomcat统一编码时按照ISO_8859_1编译的也就是Latin_1)
         String username = new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String password = new String(req.getParameter("password").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 
-        logger.info("用户名信息{}",username);
-        logger.info("密码信息{}",password);
+        logger.info("用户名信息:{}",username);
+        logger.info("密码信息:{}",password);
 
         User user = userService.getUserByName(username);
 
