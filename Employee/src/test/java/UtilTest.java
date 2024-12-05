@@ -25,6 +25,9 @@ public class UtilTest {
         }
     }
 
+    /**
+     * BeanUtils测试
+     */
     @Test
     public void BeanUtilsTest(){
         AttendanceVO attendanceVO = new AttendanceVO();

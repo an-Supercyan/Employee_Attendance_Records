@@ -16,30 +16,41 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserSQLTest {
-        @Test
-        public void addUserTest() {
-            UserServiceImpl userService = new UserServiceImpl();
-            User user = new User();
-            user.setUserName("test");
-            user.setPassWord("123456");
-            user.setAuthId(0L);
-            userService.addUser(user);
-        }
-        @Test
-        public void deleteUserTest(){
-            LogoutServiceImpl logoutService = new LogoutServiceImpl();
-            RegisterServiceImpl registerService = new RegisterServiceImpl();
-            User user = new User();
-            user.setId(3);
-            logoutService.deleteUserById(user.getId());
-            System.out.println(user);
-        }
 
-        @Test
-        public void getUserByNameTest(){
-            UserService userService = new UserServiceImpl();
-            User user = userService.getUserByName("test");
-            System.out.println(user);
-        }
+    /**
+     * 测试添加用户
+     */
+    @Test
+    public void addUserTest() {
+        UserServiceImpl userService = new UserServiceImpl();
+        User user = new User();
+        user.setUserName("test");
+        user.setPassWord("123456");
+        user.setAuthId(0L);
+        userService.addUser(user);
     }
+
+    /**
+     * 测试删除用户
+     */
+    @Test
+    public void deleteUserTest() {
+        LogoutServiceImpl logoutService = new LogoutServiceImpl();
+        RegisterServiceImpl registerService = new RegisterServiceImpl();
+        User user = new User();
+        user.setId(3);
+        logoutService.deleteUserById(user.getId());
+        System.out.println(user);
+    }
+
+    /**
+     * 测试根据用户名查询用户
+     */
+    @Test
+    public void getUserByNameTest() {
+        UserService userService = new UserServiceImpl();
+        User user = userService.getUserByName("test");
+        System.out.println(user);
+    }
+}
 

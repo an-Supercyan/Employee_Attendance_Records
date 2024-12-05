@@ -7,6 +7,10 @@ import com.employee_records.pojo.vo.AuthenticationVO;
 import org.junit.Test;
 
 public class AuthSqlTest {
+
+    /**
+     * 更新权限信息
+     */
     @Test
     public void updateAuthTest(){
         AuthenticationDTO authenticationDTO = new AuthenticationDTO(10L,10L);
@@ -18,6 +22,9 @@ public class AuthSqlTest {
         System.out.println(registerService.getAuthByKey("secret7"));
     }
 
+    /**
+     * 删除权限信息
+     */
     @Test
     public void deleteAuthTest() {
         LogoutService logoutService = new LogoutServiceImpl();

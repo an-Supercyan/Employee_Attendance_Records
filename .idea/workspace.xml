@@ -9,64 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="分页查询修复&#10;&#10;修复了某页删除完当前页的所有数据时导致的空集合异常问题">
-      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/constant/SQL/authSQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/LogoutService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/LogoutServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/dto/AuthenticationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Employee/src/test/java/AuthSqlTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Employee/src/test/java/UserSQLTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="83fd4a2c-8fc2-45bb-81e1-24e0601ca686" name="更改" comment="《用户注册与注销模块》&#10;&#10;实现用户根据邀请码进行注册操作:&#10;邀请码对应身份分为两种 1.管理员身份 2.员工身份&#10;&#10;实现注册时用户信息与权限信息的逻辑外键连接更新&#10;&#10;实现检验用户身份进行注销操作:&#10;实现注销时，对用户账户合法性的校验，注销成功后对用户信息进行数据库删除，对应用户账户的权限信息的删除">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7a681e56-76cf-462a-bd98-05b03b7ac152.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7a681e56-76cf-462a-bd98-05b03b7ac152.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/constant/SQL/UserSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/constant/SQL/userSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/RegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/AttendanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/AttendanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/RegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/RegisterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/dao/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/vo/AuthenticationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/pojo/vo/AuthenticationVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/AttendanceServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/java/com/employee_records/servlet/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/attendanceQuery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/attendanceQuery.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/erro.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/erro.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/loginErro.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/loginErro.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/logout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/main/webapp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/main/webapp/search.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/src/test/java/SqlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/test/java/AtdanSqlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/test/java/AuthSqlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/test/java/AuthSqlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/src/test/java/UserSQLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/test/java/UserSQLTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/src/test/java/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/src/test/java/UtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/RegisterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/RegisterServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/dto/AttendanceDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/dto/AttendanceDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AtdanPageServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/AttendanceServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/servlet/RegisterServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/attendanceQuery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/attendanceQuery.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/erro.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/erro.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/RegisterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/dao/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/vo/AuthenticationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/WEB-INF/classes/com/employee_records/pojo/vo/AuthenticationVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/loginErro.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/loginErro.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/Employee/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/Employee/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/Employee/search.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/RegisterService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/AttendanceServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/RegisterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/RegisterServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/dao/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/dto/AttendanceDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/dto/AttendanceDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/vo/AuthenticationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/pojo/vo/AuthenticationVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanPageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AtdanPageServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AttendanceServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/AttendanceServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/classes/com/employee_records/servlet/RegisterServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employee/target/test-classes/SqlTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Employee/target/test-classes/UtilTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Employee/target/test-classes/UtilTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,9 +63,6 @@
   <component name="MavenRunner">
     <option name="jreName" value="17" />
   </component>
-  <component name="PerforceDirect.Settings">
-    <option name="CHARSET" value="无" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -138,7 +94,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Facet",
+    "project.structure.last.edited": "工件",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.40712222",
     "settings.editor.selected.configurable": "MavenSettings",
@@ -158,12 +114,32 @@
       <recent name="E:\idea\Employee\Employee\src\main\java\com\employee_records\dao\impl" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AuthSqlTest.deleteAuthTest">
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 9.0.94">
     <configuration name="AtdanSqlTest.selectAttendance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Employee" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AtdanSqlTest" />
       <option name="METHOD_NAME" value="selectAttendance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AtdanSqlTest.selectAttendance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Employee" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AtdanSqlTest" />
+      <option name="METHOD_NAME" value="selectAttendance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthSqlTest.deleteAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Employee" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AuthSqlTest" />
+      <option name="METHOD_NAME" value="deleteAuthTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,6 +165,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AuthSqlTest.updateAuthTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Employee" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AuthSqlTest" />
+      <option name="METHOD_NAME" value="updateAuthTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserSQLTest.addUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Employee" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserSQLTest" />
+      <option name="METHOD_NAME" value="addUserTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserSQLTest.addUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Employee" />
       <option name="PACKAGE_NAME" value="" />
@@ -207,6 +203,103 @@
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserSQLTest.getUserByNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Employee" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserSQLTest" />
+      <option name="METHOD_NAME" value="getUserByNameTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.94" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.94" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Employee:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Employee_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="8e27dc80-8517-45e6-9ef7-46d404467efe" />
+      </server-settings>
+      <log_file alias="Tomcat Manager 日志" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" skipped="false" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53692" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Employee:war exploded" />
+        </option>
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.94" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.94" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17" nameIsGenerated="true">
@@ -365,6 +458,14 @@
       <workItem from="1733124871037" duration="6644000" />
       <workItem from="1733139129371" duration="2660000" />
       <workItem from="1733191504495" duration="13251000" />
+      <workItem from="1733272949477" duration="2766000" />
+      <workItem from="1733276096096" duration="19000" />
+      <workItem from="1733279044349" duration="368000" />
+      <workItem from="1733280969293" duration="2173000" />
+      <workItem from="1733301721876" duration="5860000" />
+      <workItem from="1733358976238" duration="2302000" />
+      <workItem from="1733380328124" duration="4779000" />
+      <workItem from="1733394499136" duration="1777000" />
     </task>
     <task id="LOCAL-00001" summary="完整项目提交">
       <option name="closed" value="true" />
@@ -441,7 +542,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

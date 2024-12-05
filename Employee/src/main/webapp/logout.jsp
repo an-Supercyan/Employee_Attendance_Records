@@ -295,12 +295,12 @@
                 .then(response => {
                     if (response.data === 1) {
                         //弹出注销成功弹窗后两秒返回登录页面
-                        alert('注销成功，两秒后返回登录页面');
+                        showAlert('注销成功!','两秒后返回登录页面');
                         setTimeout(function () {
                             window.location.href = 'login.jsp';
                         }, 2000);
                     } else if(response.data === 0) {
-                        alert('用户名或密码错误');
+                        showAlert('注销失败','用户名或密码错误');
                     }
                 }).catch(error => {
                     console.error(error);
@@ -317,6 +317,26 @@
     document.getElementById("btnNo").addEventListener("click", function () {
         window.location.href = 'index.jsp';
     });
+
+    // 显示alert弹窗的函数，可以动态设置标题和消息
+    function showAlert(title, message) {
+        // 如果没有传入参数，使用默认值
+        title = title || '温馨提示';
+        message = message || '默认弹窗';
+
+        // 更新弹窗内容
+        document.getElementById('alertTitle').textContent = title;
+        document.getElementById('alertMessage').textContent = message;
+
+        // 显示弹窗
+        document.getElementById('alertOverlay').classList.add('show');
+    }
+
+    // 关闭弹窗的函数
+    function closeAlert() {
+        document.getElementById('alertOverlay').classList.remove('show');
+    }
+
 </script>
 </body>
 </html>

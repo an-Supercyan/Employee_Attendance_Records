@@ -88,7 +88,7 @@
     <div class="error-icon">⚠️</div>
     <h1 class="error-title">登录失败</h1>
     <p class="error-message">
-        您输入的用户名或密码不正确。请检查您的凭据并重新尝试登录。
+        您输入的用户名或密码不正确。请检查您的凭据并尝试重新登录。
     </p>
     <a href="<%=request.getContextPath()%>/login.jsp" class="retry-button">重新登录</a>
 </div>

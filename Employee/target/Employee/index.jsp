@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-100:#0077C2;
-            --primary-200:#59a5f5;
+            --primary-100: #0077C2;
+            --primary-200: #59a5f5;
             --primary-300: #466be5;
             --accent-100: #466be5;
             --accent-200: #54abe6;
-            --text-100:#333333;
-            --text-200:#5c5c5c;
-            --bg-100:#FFFFFF;
-            --bg-200:#f5f5f5;
-            --bg-300:#cccccc;
+            --text-100: #333333;
+            --text-200: #5c5c5c;
+            --bg-100: #FFFFFF;
+            --bg-200: #f5f5f5;
+            --bg-300: #cccccc;
             --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 
@@ -314,9 +314,15 @@
             </div>
         </div>
         <div class="menu-item" onclick="window.location.href='logout.jsp'">
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-trash-alt"></i>
             <div class="menu-item-content">
                 <h3 class="menu-item-title">注销账户</h3>
+            </div>
+        </div>
+        <div class="menu-item" onclick="window.location.href='login.jsp'">
+            <i class="fas fa-sign-out-alt"></i>
+            <div class="menu-item-content">
+                <h3 class="menu-item-title">退出登录</h3>
             </div>
         </div>
     </div>
@@ -380,14 +386,14 @@
     //axios实现异步插入数据
     document.getElementById('attendanceForm').addEventListener('submit', function (event) {
         event.preventDefault();
-        const  formData = new FormData(this);
+        const formData = new FormData(this);
         const f = Object.fromEntries(formData.entries())
         formData.append('jsonData', JSON.stringify(f));
         console.log(formData);
-        axios.post('insert.action',f)
-        .then(response => {
-            showAlert('操作成功','员工考勤信息添加成功!\n\n是否跳转到搜索页面?')
-        })
+        axios.post('insert.action', f)
+            .then(response => {
+                showAlert('操作成功', '员工考勤信息添加成功!\n\n是否跳转到搜索页面?')
+            })
             .catch(error => {
                 showAlert('数据插入失败', '请将问题反馈给管理员')
                 console.error(error);
@@ -395,13 +401,13 @@
             })
     })
 
-    //弹窗相关函数 弹窗显示与关闭
+    //新增考勤信息弹窗相关函数 弹窗显示与关闭
     function openModal() {
         document.getElementById('attendanceModal').style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
 
-    //关闭弹窗 并恢复滚动
+    //关闭新增考勤信息弹窗 并恢复滚动
     function closeModal() {
         document.getElementById('attendanceModal').style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -414,6 +420,8 @@
             closeModal();
         }
     }
+
+    //退出登录时
 
     // 显示alert弹窗的函数，可以动态设置标题和消息
     function showAlert(title, message) {

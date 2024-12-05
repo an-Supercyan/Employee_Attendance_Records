@@ -314,7 +314,7 @@
             isValid = false;
         }
 
-        // Password matching validation
+        // 确认密码
         if (password !== confirmPassword) {
             document.getElementById('confirmPasswordError').textContent = '两次输入的密码不一致';
             Swal.fire({
@@ -367,7 +367,14 @@
         return isValid;
     }
 
-    // 使用axios异步提交表单(注册成功则返回状态码0，注册失败则返回状态码1:表示管理员 或2:表示普通员工)
+    //若isValid为false则阻止表单提交
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
+
+    // 使用axios异步提交表单(注册失败则返回状态码0，注册成功则返回状态码 1:表示管理员 或 2:表示普通员工)
     const form = document.getElementById('registrationForm');
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -397,7 +404,7 @@
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: '注册失败,请联系系统维护管理员',
+                        title: '注册失败,您未拥有注册权限',
                        text: response.data.message,
                     })
                 }
